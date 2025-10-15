@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Travel Planner</title>
+</head>
+<body>
+    <script>
+        // Travel Destinations
+        const destination = [];
+
+        for (let i = 0; i < 3; i++) {
+            const place = prompt(`Enter Your Destination ${i + 1}:`);
+            destination.push(place);
+        }
+
+        // Budget Check
+        const budget = Number(prompt("Enter Your Total Travel Budget In ₹:"));
+        let budgetComment = "";
+
+        if (budget < 10000) {
+            budgetComment = "Plan A Short Domestic Trip.";
+        }
+        else if (budget >= 10000 && budget <= 50000) {
+            budgetComment = "You Can Plan A Long Domestic Trip.";
+        }
+        else {
+            budgetComment = "International Trip Possible!";
+        }
+
+        // Number of Days
+        const days = Number(prompt("Enter Number Of Travel Days:"));
+        let daySuggestion = "";
+
+        if (days < 3) {
+            daySuggestion = "Weekend Getaway.";
+        }
+        else if (days >= 3 && days <= 7) {
+            daySuggestion = "Perfect Holiday Trip.";
+        }
+        else {
+            daySuggestion = "Extended Vacation.";
+        }
+
+        // Hotel Budget Suggestion
+        const hotelSuggestion = (totalBudget, travelDays) => {
+            const budgetPerDay = totalBudget / travelDays;
+            if (budgetPerDay < 2000) {
+                return "You Must Consider Budget Hotels.";
+            }
+            else if (budgetPerDay >= 2000 && budgetPerDay <= 5000) {
+                return "You Can Consider Mid-range Hotels.";
+            }
+            else {
+                return "You Can Consider Luxury Hotels.";
+            }
+        };
+
+        const hotelType = hotelSuggestion(budget, days);
+
+        // Final Summary
+        console.log("Smart Travel Planner Summary");
+        console.log(`Destinations Entered: [${destination.join(", ")}]`);
+        console.log(`Total Budget: ₹${budget}`);
+        console.log(`Days Planned: ${days}`);   
+        console.log(`Trip Type: ${daySuggestion}`);
+        console.log(`Hotel Suggestion: ${hotelType}`);
+        console.log(`Travel Summary: ${budgetComment}`);
+    </script>
+</body>
+
+</html>
